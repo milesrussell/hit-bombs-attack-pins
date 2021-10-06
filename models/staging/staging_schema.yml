@@ -1,0 +1,108 @@
+version: 2
+
+models:
+  - name: stg_courses
+    description: >
+      This view contains all courses that were played, including the scorecard
+      yardage and the satellite-measured yardage.
+    columns:
+      - name: course_id
+        tests:
+          - not_null
+          - unique
+      - name: course_name
+        tests:
+          - not_null
+
+  - name: stg_holes
+    description: >
+      This view contains all holes that were played, including the scorecard
+      yardage and the satellite-measured yardage.
+    columns:
+      - name: course_id
+        tests:
+          - not_null
+      - name: hole_id
+        tests:
+          - not_null
+          - unique
+
+  - name: stg_rounds
+    description: >
+      This view contains a record of all rounds that were played.
+    columns:
+      - name: course_id
+        tests:
+          - not_null
+      - name: round_id
+        tests:
+          - not_null
+          - unique
+
+  - name: stg_shot_types
+    description: >
+      Contains all possible shot types.
+    columns:
+      - name: shot_type_id
+        tests:
+          - not_null
+          - unique
+          - accepted_values:
+              values: [
+                0,
+                1,
+                2,
+                3,
+                4,
+                5,
+                6
+              ]
+
+  - name: stg_shots_to_hole
+    description: >
+      This view contains the average strokes to hole out from each distance and
+      shot type. All rows will have a professional value, with the goal of
+      eventually filling in all scratch values.
+    columns:
+      - name: distance
+        tests:
+          - not_null
+      - name: pro_strokes_to_hole
+        tests:
+          - not_null:
+              config:
+                severity: warn
+      - name: shot_type
+        tests:
+          - not_null
+
+  - name: stg_shots
+    description: >
+      This view contains a record of each shot.
+    columns:
+      - name: hole_id
+        tests:
+          - not_null
+      - name: hole_shot_seq
+        tests:
+          - not_null
+      - name: round_id
+        tests:
+          - not_null
+      - name: shot_id
+        tests:
+          - not_null
+          - unique
+      - name: shot_type
+        tests:
+          - not_null
+          - accepted_values:
+              values: [
+                0,
+                1,
+                2,
+                3,
+                4,
+                5,
+                6
+              ]

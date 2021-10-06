@@ -1,0 +1,11 @@
+version: 2
+
+sources:
+  - name: hit_bombs_attack_pins
+    tables:
+      - name: courses_raw
+      - name: holes_raw
+      - name: rounds_raw
+      - name: shot_types_raw
+      - name: shots_raw
+      - name: shots_to_hole_raw
