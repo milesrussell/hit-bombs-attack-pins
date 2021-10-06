@@ -27,6 +27,18 @@ models:
           - not_null
           - unique
 
+  - name: stg_rounds
+    description: >
+      This view contains a record of all rounds that were played.
+    columns:
+      - name: course_id
+        tests:
+          - not_null
+      - name: round_id
+        tests:
+          - not_null
+          - unique
+
   - name: stg_shots_to_hole
     description: >
       This view contains the average strokes to hole out from each distance and
