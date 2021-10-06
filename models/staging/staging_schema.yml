@@ -14,6 +14,19 @@ models:
         tests:
           - not_null
 
+  - name: stg_holes
+    description: >
+      This view contains all holes that were played, including the scorecard
+      yardage and the satellite-measured yardage.
+    columns:
+      - name: course_id
+        tests:
+          - not_null
+      - name: hole_id
+        tests:
+          - not_null
+          - unique
+
   - name: stg_shots_to_hole
     description: >
       This view contains the average strokes to hole out from each distance and

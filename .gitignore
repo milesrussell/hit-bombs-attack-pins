@@ -1,3 +1,5 @@
-dbt_modules
-target
-logs
+dbt_modules/
+target/
+logs/
+*.log
+.DS_Store
