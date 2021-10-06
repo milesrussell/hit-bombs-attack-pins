@@ -15,3 +15,11 @@ target-path: "target"
 clean-targets:
     - "target"
     - "dbt_modules"
+
+require-dbt-version: ">=0.21.0"
+
+models:
+  hit_bombs_attack_pins:
+    staging:
+      materialized: view
+      schema: staging

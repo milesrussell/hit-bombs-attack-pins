@@ -1,0 +1,20 @@
+version: 2
+
+models:
+  - name: stg_shots_to_hole
+    description: >
+      This view contains the average strokes to hole out from each distance and
+      shot type. All rows will have a professional value, with the goal of
+      eventually filling in all scratch values.
+    columns:
+      - name: distance
+        tests:
+          - not_null
+      - name: pro_strokes_to_hole
+        tests:
+          - not_null:
+              config:
+                severity: warn
+      - name: shot_type
+        tests:
+          - not_null
