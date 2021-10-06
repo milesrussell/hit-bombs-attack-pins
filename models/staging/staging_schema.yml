@@ -39,6 +39,25 @@ models:
           - not_null
           - unique
 
+  - name: stg_shot_types
+    description: >
+      Contains all possible shot types.
+    columns:
+      - name: shot_type_id
+        tests:
+          - not_null
+          - unique
+          - accepted_values:
+              values: [
+                0,
+                1,
+                2,
+                3,
+                4,
+                5,
+                6
+              ]
+
   - name: stg_shots_to_hole
     description: >
       This view contains the average strokes to hole out from each distance and
