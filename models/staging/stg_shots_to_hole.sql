@@ -5,8 +5,8 @@ WITH shots_to_hole AS (
 )
 
 SELECT
-  distance AS distance,
-  ROUND(pro_strokes_to_hole, 2) AS pro_strokes_to_hole,
-  ROUND(scratch_strokes_to_hole, 2) AS scratch_strokes_to_hole,
-  shot_type AS shot_type
+  CAST(distance AS INT) AS distance,
+  ROUND(CAST(pro_strokes_to_hole AS FLOAT64), 2) AS pro_strokes_to_hole,
+  ROUND(CAST(scratch_strokes_to_hole AS FLOAT64), 2) AS scratch_strokes_to_hole,
+  CAST(shot_type AS STRING) AS shot_type
 FROM shots_to_hole
