@@ -75,3 +75,34 @@ models:
       - name: shot_type
         tests:
           - not_null
+
+  - name: stg_shots
+    description: >
+      This view contains a record of each shot.
+    columns:
+      - name: hole_id
+        tests:
+          - not_null
+      - name: hole_shot_seq
+        tests:
+          - not_null
+      - name: round_id
+        tests:
+          - not_null
+      - name: shot_id
+        tests:
+          - not_null
+          - unique
+      - name: shot_type
+        tests:
+          - not_null
+          - accepted_values:
+              values: [
+                0,
+                1,
+                2,
+                3,
+                4,
+                5,
+                6
+              ]
