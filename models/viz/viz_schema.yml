@@ -1,0 +1,13 @@
+version: 2
+
+models:
+  - name: shots_strokes_gained
+    description: A table at the level of a stroke, complete with information about that stroke and its strokes gained values.
+    columns:
+      - name: shot_id
+        tests:
+          - not_null
+          - unique
+      - name: strokes_gained_pro
+        tests:
+          - not_null
