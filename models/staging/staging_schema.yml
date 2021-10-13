@@ -69,9 +69,7 @@ models:
           - not_null
       - name: pro_strokes_to_hole
         tests:
-          - not_null:
-              config:
-                severity: warn
+          - not_null
       - name: shot_type
         tests:
           - not_null
