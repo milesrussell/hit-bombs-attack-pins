@@ -26,6 +26,7 @@ shots_joined AS (
     shots.measured_distance,
     holes.scorecard_yardage AS hole_scorecard_yardage,
     holes.satellite_yardage AS hole_satellite_yardage,
+    holes.par,
     shots.round_id,
     CASE
       WHEN shots.measured_distance IS NOT NULL THEN shots.measured_distance
@@ -42,5 +43,13 @@ shots_joined AS (
 )
 
 SELECT
-  *
+  *,
+  CASE
+    WHEN par = 3 AND shot_type = 'Tee' THEN 'Approach'
+    WHEN par IN (4, 5) AND shot_type = 'Tee' THEN 'Off The Tee'
+    WHEN shot_type = 'Green' THEN 'Putting'
+    WHEN shot_type != 'Green' AND distance <= 30 THEN 'Around The Green'
+    WHEN shot_type IN ('Fairway', 'Rough', 'Sand', 'Recovery') AND distance > 30 THEN 'Approach'
+    ELSE NULL
+  END AS sg_category
 FROM shots_joined

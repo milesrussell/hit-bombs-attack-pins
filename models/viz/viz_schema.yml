@@ -11,3 +11,6 @@ models:
       - name: strokes_gained_pro
         tests:
           - not_null
+      - name: strokes_gained_scratch
+        tests:
+          - not_null
