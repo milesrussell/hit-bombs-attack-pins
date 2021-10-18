@@ -30,6 +30,7 @@ shots_with_avgs AS (
     shots.hole_id,
     shots.distance,
     shots.round_id,
+    shots.sg_category,
     shots_to_hole.pro_strokes_to_hole,
     shots_to_hole.scratch_strokes_to_hole,
     rounds.day,

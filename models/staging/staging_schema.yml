@@ -73,6 +73,9 @@ models:
       - name: shot_type
         tests:
           - not_null
+      - name: scratch_strokes_to_hole
+        tests:
+          - not_null
 
   - name: stg_shots
     description: >
