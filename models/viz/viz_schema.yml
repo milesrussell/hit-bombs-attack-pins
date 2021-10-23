@@ -1,6 +1,14 @@
 version: 2
 
 models:
+  - name: sg_by_category_and_bucket
+    description: Aggregates storkes gained to category and distance buckets to analyze areas for improvement
+    columns:
+      - name: key
+        tests:
+          - not_null
+          - unique
+
   - name: shots_strokes_gained
     description: A table at the level of a stroke, complete with information about that stroke and its strokes gained values.
     columns:
