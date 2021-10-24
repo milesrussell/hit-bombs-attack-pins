@@ -83,12 +83,12 @@ SELECT
 
   {% for toggle in toggles %}
 
-  CASE
+  ROUND(CASE
     WHEN resulting_shot_type IS NULL THEN {{ toggle }}_strokes_to_hole - 1 -- if the stroke is holed, return the average strokes to hole from the previous position minus the shot required to hole out.
     WHEN shot_type = 'Penalty' THEN 0 -- strokes lost due to penalty are applied to the shot preceding the penalty stroke.
     WHEN resulting_shot_type = 'Penalty' THEN {{ toggle }}_strokes_to_hole - two_strokes_later_{{ toggle }}_strokes_to_hole - 2 -- if a stroke results in a penalty, use the average strokes to hole from the shot following the penalty.
     ELSE {{ toggle }}_strokes_to_hole - resulting_{{ toggle }}_strokes_to_hole - 1
-  END AS strokes_gained_{{ toggle }},
+  END, 2) AS strokes_gained_{{ toggle }},
 
   {% endfor %}
 

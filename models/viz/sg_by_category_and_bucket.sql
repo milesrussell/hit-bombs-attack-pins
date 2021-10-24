@@ -45,10 +45,6 @@ agg AS (
     1,
     2,
     3
-  ORDER BY
-    1,
-    2,
-    3
 )
 
 SELECT
