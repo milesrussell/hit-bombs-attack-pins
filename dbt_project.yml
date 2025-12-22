@@ -15,8 +15,9 @@ target-path: "target"
 clean-targets:
     - "target"
     - "dbt_modules"
+    - "dbt_packages"
 
-require-dbt-version: ">=0.21.0"
+require-dbt-version: ">=1.10.0,<1.11.0"
 
 models:
   hit_bombs_attack_pins:
